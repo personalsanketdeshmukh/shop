@@ -1,0 +1,73 @@
+<div class="modal-header green-bg with-button">
+    <div class="pull-right">
+        <button class="btn btn-clear" ng-click="refreshTimeline();$dismiss();">
+            <i class="ln-cross"></i>
+        </button>
+    </div>
+    <h5 class="modal-title">All JIR</h5>
+</div>
+<div class="modal-body">
+    <form name="companyForm" ng-submit="saveCompany(formData)">
+        <div class="form-group">
+            <!--<label>Upload Photos</label>-->
+            <!--<upload-image ng-model="photo.file" ng-callback="onPhotoUploadCallback(photo)" no-view></upload-image>-->
+            <upload-image-new ng-model="img" ng-if="assignment.dateOfLoss && assignment.timelineStatus !== 'Force Closed'" ng-callback="onJirUploadCallback(img,length)"
+                multiple no-view></upload-image-new>
+        </div>
+    </form>
+    <div class="field">
+        <div class="custom-tabs">
+            <div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="space-left">Jir </span><span class="color-green">({{assignment.jir.length}})</span>
+                        <span class="space-left">
+                <a tooltip-placement="top" uib-tooltip="Download Zip of All Jir" class="btn btn-primary temp-btnbg" ng-if="assignment.jir.length > 0" ng-click="generateZip('jir');">
+                                            <i class="ln-file-zip font-size22"></i>
+                </a>
+                <a tooltip-placement="top" uib-tooltip="Delete Jir" class="btn btn-primary temp-btnbg" ng-click="deleteSelectedData('jir');">
+                                            <i class="ln-trash2 font-size22"></i>
+                </a>
+                </span>
+                         <div class="checkbox checkbox-primary float-left">
+                                                <input id="checkboxAll" type="checkbox" ng-model="selectAll" ng-click="selectAllData('jir',selectAll)">
+                                                <label for="checkboxAll">Select All</label></a>
+                                            </div>
+                    </div>
+                </div>
+                <div class="file-selector">
+                    <!-- <div class="text-center" ng-if="file.files.length==0">No files found.</div> -->
+                    <div class="scroll-x-max">
+                        <div class="row">
+                            <div class="col-md-3 mter" ng-repeat="photo in assignment.jir track by $index">
+                                <div class="photosbx">
+                                    <a fancybox-box rel="gallery1" style="opacity:1;" href="{{photo.file|uploadpath}}">
+                                        <img ng-src="{{photo.file|uploadpath}}" alt="" class="img-responsive">
+                                    </a>
+                                    <p>{{photo.fileName | date:'ddMMMyy, hh:mm'}}</p>
+                                    <div class="col-md-12">
+                                        <div class="col-md-4">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="{{ 'checkbox'+ $index }}" type="checkbox" ng-click="addDataToDelete('jir',$index,photo.file)" ng-checked="selectAll">
+                                                <label for="{{ 'checkbox'+ $index }}"> </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 top-padding-left">
+                                            <a tooltip-placement="top" uib-tooltip="Download Jir" class="btn btn-primary temp-btnbg" download="{{photo.file}}" ng-href="{{photo.file|downloadImage}}">
+                                                <i class="ln-download font-size18"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-4 top-padding">
+                                            <a tooltip-placement="top" uib-tooltip="Remove Jir" class="btn btn-primary temp-btnbg" ng-click="removeElement('jir',$index)">
+                                                <i class="ln-trash2 font-size18"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

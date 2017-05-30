@@ -1,0 +1,43 @@
+<!-- <div id="progressBar">
+	<div class="loader"></div>
+</div> -->
+<div class="breadcrumbs">
+    <ul>
+        <li><a title="Home">Home</a></li>
+        <li><a ui-sref="dashboard" title="Dashboard">Dashboard</a></li>
+    </ul>
+</div>
+<div class="heading-sec">
+    <div class="row">
+        <div class="col-md-4 column">
+            <div class="heading-profile">
+                <h2>Dashboard</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Top Bar Chart -->
+<div class="panel-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="mini-stats-sec">
+                <div class="row">
+                    <div class="col-md-3" ng-repeat="data in Arr">
+                        <div class="widget" ng-click="gotoAssignmentList(data._id)">
+                            <div class="mini-stats tmp-mini-stats" ng-style="{'background':'{{data._id | timeline }}'}">
+                                <h2 class="display-inblock marg0">{{ data.count }}</h2>
+                                <p class="mini-stats_color display-inblock marg0">{{ data._id}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="widget">
+                        <div class="mini-stats tmp-mini-stats" >
+                            <h2 class="display-inblock marg0">{{ Total }}</h2>
+                            <p class="mini-stats_color display-inblock marg0">Total</p>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+            <!-- Mini stats Sec -->
+        </div>
+    </div>

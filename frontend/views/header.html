@@ -1,0 +1,34 @@
+<div class="top-bar">
+    <div class="logo">
+        <a ui-sref="dashboard" title="Absolute"><img src="frontend/img/logo.png" alt="Absolute" height="45"></a>
+        <div class="menu-options"><span class="menu-action"><i></i></span></div>
+    </div>
+    <div class="quick-links">
+        <ul>
+            <!--<li>
+                <a href="https://calendar.google.com/calendar" target="_blank" class="cal-tag"><i class="ln-calendar3"></i></a>
+            </li>-->
+            <li>
+                <a title="Logout" class="show-stats red-skin" ui-sref="login" tooltip-placement="left" uib-tooltip="Logout"><i class="fa fa-power-off"></i></a>
+            </li>
+        </ul>
+    </div>
+    <div class="loaderHeader" ng-show="template.isLoader">
+        <img src="frontend/img/loader.gif" alt="" style="height:120px; width:120px;">
+    </div>
+</div>
+<!-- Top Bar -->
+<header class="side-header light-skin opened-menu">
+    <div class="admin-details">
+        <span><img ng-src="{{template.profile.photo|serverimage}}" alt="" /></span>
+        <h3 class="capitalize" ng-bind="template.profile.name"></h3>
+        <i class="capitalize" ng-bind="template.profile.accessLevel"></i>
+    </div>
+    <div class="menu-scroll">
+        <div class="side-menus">
+            <span>MAIN LINKS</span>
+            <nav ng-include="template.menu"></nav>
+        </div>
+    </div>
+    <!-- Menu Scroll -->
+</header>
